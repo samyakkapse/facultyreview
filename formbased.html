@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIT Faculty Review</title>
+    <style>
+       
+
+/* --- PREMIUM BLACK & GREY THEME --- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+:root {
+    --bg-pure: #000000;
+    --bg-soft: #0a0a0a;
+    --card-bg: #111111;
+    --border-dim: #222222;
+    --border-bright: #444444;
+    --text-ghost: #777777;
+    --text-main: #e0e0e0;
+    --accent: #ffffff; 
+    --highlight: #3b82f6; 
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-pure);
+    background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+    background-size: 30px 30px; /* Subtle grid background */
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-pure); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 10px; }
+
+nav {
+    padding: 2rem 5%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-dim);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+nav h1 span { color: var(--text-ghost); }
+
+.container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 4rem;
+    padding: 0 5%;
+}
+
+/* --- THE FORM --- */
+.form-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border: 1px solid var(--border-dim);
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+    transition: border-color 0.3s ease;
+}
+
+.form-card:hover { border-color: var(--border-bright); }
+
+h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
+.input-group { margin-bottom: 1.5rem; }
+
+label {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-ghost);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+input, select, textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border-dim);
+    padding: 1rem;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--bg-soft);
+}
+
+.rating-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+button.btn-post {
+    width: 100%;
+    background: var(--accent);
+    color: var(--bg-pure);
+    padding: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: letter-spacing 0.3s ease;
+}
+
+button.btn-post:hover {
+    letter-spacing: 2px;
+    background: #f0f0f0;
+}
+
+/* --- THE FEED --- */
+.review-card {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-bottom: 1px solid var(--border-dim);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.prof-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -1.5px;
+}
+
+.course-tag {
+    font-size: 0.8rem;
+    color: var(--text-ghost);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.score-box {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--accent);
+}
+
+.metrics-list {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.metric {
+    font-size: 0.75rem;
+    color: var(--text-ghost);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 0.5rem;
+}
+
+.metric b { color: var(--text-main); }
+
+.comment-box {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    border-left: 1px solid var(--border-bright);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+}
+
+.del-btn {
+    background: none;
+    border: none;
+    color: #444;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.del-btn:hover { color: #ff0000; }
+
+@media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    .form-card { position: static; width: auto; }
+}
+    </style>
+</head>
+<body>
+
+<nav>
+    <h1>VIT Faculty Review</h1>
+</nav>
+
+<div class="container">
+    <aside class="form-card">
+        <h2>Submit Review</h2>
+        <form id="profForm">
+            <div class="input-group">
+                <label>Faculty Name</label>
+                <input type="text" id="facultyName" placeholder="Dr. Alexander Smith" required>
+            </div>
+
+            <div class="input-group">
+                <label>Course Name</label>
+                <input type="text" id="courseName" placeholder="BCSE303L" required>
+            </div>
+
+            <div class="rating-grid">
+                <div>
+                    <label>Teaching</label>
+                    <select id="rTeach">
+                        <option value="5">Excellent</option><option value="4">Above Avg</option><option value="3">Average</option><option value="2">Below Avg</option><option value="1">Poor</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Marking</label>
+                    <select id="rMark">
+                        <option value="5">Easy S Grade</option><option value="4">Fair</option><option value="3">Standard</option><option value="2">Strict</option><option value="1">Harsh</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Strictness</label>
+                    <select id="rStrict">
+                        <option value="1">Chill</option><option value="2">Moderate</option><option value="3">Standard</option><option value="4">High</option><option value="5">Extreme</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Content</label>
+                    <select id="rEngage">
+                        <option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Experience Details</label>
+                <textarea id="comments" placeholder="Review details..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-post">Post to Database</button>
+        </form>
+    </aside>
+
+    <main class="reviews-feed">
+        <h2 id="feedStatus">Recent Submissions</h2>
+        <div id="feedContainer"></div>
+    </main>
+</div>
+
+<script>
+    const profForm = document.getElementById('profForm');
+    const feedContainer = document.getElementById('feedContainer');
+
+    window.onload = () => {
+        const stored = JSON.parse(localStorage.getItem('facultyReviews')) || [];
+        stored.forEach(item => createReviewCard(item));
+        updateCount(stored.length);
+    };
+
+    profForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+            id: Date.now(),
+            name: document.getElementById('facultyName').value,
+            course: document.getElementById('courseName').value,
+            teach: document.getElementById('rTeach').value,
+            mark: document.getElementById('rMark').value,
+            strict: document.getElementById('rStrict').value,
+            engage: document.getElementById('rEngage').value,
+            text: document.getElementById('comments').value,
+            date: new Date().toLocaleDateString()
+        };
+
+        const list = JSON.parse(localStorage.getItem('facultyReviews')) || [];
+        list.unshift(data);
+        localStorage.setItem('facultyReviews', JSON.stringify(list));
+
+        createReviewCard(data, true);
+        profForm.reset();
+        updateCount(list.length);
+    });
+
+    function createReviewCard(item, top = false) {
+        const card = `
+            <div class="review-card" id="r-${item.id}">
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                    <div>
+                        <h3 class="prof-name">${item.name}</h3>
+                        <span class="course-tag">${item.course}</span>
+                    </div>
+                    <div class="score-box">${item.teach}.0</div>
+                </div>
+
+                <div class="metrics-list">
+                    <div class="metric">Instruction Quality <b>${item.teach}/5</b></div>
+                    <div class="metric">Grading Standard <b>${item.mark}/5</b></div>
+                    <div class="metric">Strictness <b>${item.strict}/5</b></div>
+                    <div class="metric">Content <b>${item.engage}/5</b></div>
+                </div>
+
+                <div class="comment-box">
+                    "${item.text}"
+                </div>
+                
+                <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                    <small style="color:#555">SUBMITTED: ${item.date}</small>
+                    <button class="del-btn" onclick="removeReview(${item.id})">Remove Entry</button>
+                </div>
+            </div>
+        `;
+        top ? feedContainer.insertAdjacentHTML('afterbegin', card) : feedContainer.insertAdjacentHTML('beforeend', card);
+    }
+
+    function removeReview(id) {
+        if(confirm("Confirm entry deletion?")) {
+            let list = JSON.parse(localStorage.getItem('facultyReviews'));
+            list = list.filter(i => i.id !== id);
+            localStorage.setItem('facultyReviews', JSON.stringify(list));
+            document.getElementById(`r-${id}`).remove();
+            updateCount(list.length);
+        }
+    }
+
+    function updateCount(n) {
+        document.getElementById('feedStatus').innerText = n === 0 ? "No Entries Logged" : `Performance Database (${n})`;
+    }
+</script>
+
+</body>
+</html>
